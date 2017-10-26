@@ -2,6 +2,30 @@
 
 import React, { Component } from 'react';
 
+class Post extends Component {
+  render() {
+    let post = this.props.posts[this.props.i];
+    console.log(post);
+    return (
+      <div key={ this.props.i }>
+        <div>Title: { post.title }</div>
+        <div>Upvotes: { post.upvotes }</div>
+        <div>Downvotes: { post.downvotes }</div>
+        <button 
+          onClick= { () => this.props.handleUpvote(post) }
+        >
+          Upvote
+        </button>
+        <button
+          onClick= { () => this.props.handleDownvote(post) }
+        >
+          Downvote
+        </button>
+      </div>
+    );
+  }
+}
+
 class App extends Component {
 	constructor() {
   	super();
@@ -60,68 +84,37 @@ class App extends Component {
     this.setState({ input: "" });
   } 
 
-  handleUpvote = (post, key) => {
+  handleUpvote = (post) => {
     post.upvotes++;
-    this.sortPosts();
-    this.forceUpdate();
+    this.setState({ posts: sortPosts(this.state.posts) });
   }
 
-  handleDownvote = (post, key) => {
+  handleDownvote = (post) => {
     post.downvotes++;
-    this.forceUpdate();
+    this.setState({ posts: this.state.posts });
   }
-
-  sortPosts = () => this.state.posts.sort(function(a, b) { return b.upvotes - a.upvotes; })
 
   render() {
     let posts = this.state.posts;
-    let _this = this;
 
     if (!posts) {
       console.log("No posts!");
       return false;
     }
 
+    let _this = this;
     return (
-      <div>
-        <form onSubmit={ this.handleSubmit }>
-          <input
-            type="text"
-            placeholder="Write the title of your new post."
-            onChange={ this.handleChange }
-            value={ this.state.input }
-          />
-          <button
-            type="submit"
-            onClick={ this.handleSubmit }
-          >
-            Submit
-          </button>
-        </form>
-
-        <div className="Posts">
-          { Object.keys(posts).map(function(key) {
-              return (
-                <div key={key}>
-                  <div>Ttile: { posts[key].title }</div>
-                  <div>Upvotes: { posts[key].upvotes }</div>
-                  <div>Downvotes: { posts[key].downvotes }</div>
-                  <button
-                    onClick={ _this.handleUpvote.bind(this, posts[key], key) }
-                    type="button"
-                  >
-                    Upvote
-                  </button>
-                  <button
-                    onClick={ _this.handleDownvote.bind(this, posts[key], key) }
-                    type="button"
-                  >
-                    Downvote
-                  </button>
-                </div>
-              );
-          })}
-        </div>
+      <div className="Posts">
+        { Object.keys(posts).map(function(key) {
+            return (
+              <Post 
+                posts = { posts }
+                i = { key }
+                handleUpvote = { (post) => _this.handleUpvote(post) }
+                handleDownvote = { (post) => _this.handleDownvote(post) }
+              />
+            );
+        })}
       </div>
     );
   }
@@ -142,6 +135,12 @@ function isIllegalPostTitle(s) {
   }
 
   return false;
+}
+
+function sortPosts(posts) {
+  let postsClone = posts.slice();
+  postsClone.sort(function(a, b) { return b.upvotes - a.upvotes; })
+  return postsClone;
 }
 
 export default App;

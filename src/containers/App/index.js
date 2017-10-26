@@ -1,26 +1,31 @@
 // src/containers/App/index.js
 
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
+
+import { defaultPosts } from './defaultPosts'
+
+import 'bootstrap/dist/css/bootstrap.css';
 
 class Post extends Component {
   render() {
     let post = this.props.posts[this.props.i];
-    console.log(post);
     return (
-      <div key={ this.props.i }>
+      <div>
         <div>Title: { post.title }</div>
-        <div>Upvotes: { post.upvotes }</div>
-        <div>Downvotes: { post.downvotes }</div>
-        <button 
+        <Button 
+          bsStyle="success" bsSize="small"
           onClick= { () => this.props.handleUpvote(post) }
         >
           Upvote
-        </button>
-        <button
+        </Button>
+        <div>Upvotes: { post.upvotes }</div>
+        <Button
           onClick= { () => this.props.handleDownvote(post) }
         >
           Downvote
-        </button>
+        </Button>
+        <div>Downvotes: { post.downvotes }</div>
       </div>
     );
   }
@@ -30,34 +35,15 @@ class App extends Component {
 	constructor() {
   	super();
 
+    let _this = this;
     this.state = {
       input: "",
       posts: [],
     };
 
     // Populate the list with some dummy posts.
-    this.state.posts.push({
-      title: "Why isn't Trump impeached yet?",
-      upvotes: 100,
-      downvotes: 43,
-    });
-
-    this.state.posts.push({
-      title: "Everyone should watch Avatar: The Last Airbender.",
-      upvotes: 5,
-      downvotes: 2,
-    });
-
-    this.state.posts.push({
-      title: "Manga, to read or not to read?",
-      upvotes: 4,
-      downvotes: 0,
-    });
-
-    this.state.posts.push({
-      title: "Batman vs Superman is the best movie everr.",
-      upvotes: -100,
-      downvotes: 0,
+    defaultPosts.forEach(function(post) {
+      _this.state.posts.push(post);
     });
 	}
 
@@ -95,26 +81,42 @@ class App extends Component {
   }
 
   render() {
-    let posts = this.state.posts;
-
-    if (!posts) {
-      console.log("No posts!");
-      return false;
-    }
-
+    // To preserve the context for an iterator later
     let _this = this;
+
+    let posts = this.state.posts;
+    let displayedPosts = posts.slice(0,20);
+
     return (
-      <div className="Posts">
-        { Object.keys(posts).map(function(key) {
-            return (
-              <Post 
-                posts = { posts }
-                i = { key }
-                handleUpvote = { (post) => _this.handleUpvote(post) }
-                handleDownvote = { (post) => _this.handleDownvote(post) }
-              />
-            );
-        })}
+      <div>
+        <form onSubmit={ this.handleSubmit }>
+          <input
+            type="text"
+            placeholder="Write the title of your new post."
+            onChange={ this.handleChange }
+            value={ this.state.input }
+          />
+          <Button
+            type="submit"
+            onClick={ this.handleSubmit }
+          >
+            Submit
+          </Button>
+        </form>
+
+        <div className="Posts">
+          { 
+            Object.keys(displayedPosts).map(function(key) {
+              return (
+                <Post key = {key}
+                  posts = { displayedPosts }
+                  i = { key }
+                  handleUpvote = { (post) => _this.handleUpvote(post) }
+                  handleDownvote = { (post) => _this.handleDownvote(post) }
+                />
+              );
+          })}
+        </div>
       </div>
     );
   }
@@ -126,6 +128,7 @@ function isIllegalPostTitle(s) {
   let isLongerThan255 = s.length > 255;
 
   if (isEmptyString || isWhitespace) {
+    alert("Please input non empty title!");
     return true;
   }
 

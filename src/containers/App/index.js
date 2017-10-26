@@ -7,6 +7,60 @@ import { defaultPosts } from './defaultPosts'
 
 import 'bootstrap/dist/css/bootstrap.css';
 
+class AddPostForm extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      input: "",
+    };
+  }
+
+  getValidationState() {
+    const length = this.state.input.length;
+    if (length > 10) return 'success';
+    else if (length > 5) return 'warning';
+    else if (length > 0) return 'error';
+    return null;
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      input: e.target.value
+    });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    // if (isIllegalPostTitle(this.state.input)) { 
+    //   this.setState({ input: "" });
+    //   return;
+    // }
+
+    this.props.createNewPost(this.state.input);
+    this.setState({ input: "" });
+  } 
+
+  render() {
+    return (
+      <form onSubmit={ this.handleSubmit }>
+        <input
+          type="text"
+          placeholder="Write the title of your new post."
+          onChange={ this.handleChange }
+          value={ this.state.input }
+        />
+        <Button
+          type="submit"
+          onClick={ this.handleSubmit }
+        >
+          Submit
+        </Button>
+      </form>
+    );
+  }
+}
+
 class Post extends Component {
   render() {
     let post = this.props.posts[this.props.i];
@@ -37,7 +91,6 @@ class App extends Component {
 
     let _this = this;
     this.state = {
-      input: "",
       posts: [],
     };
 
@@ -47,28 +100,15 @@ class App extends Component {
     });
 	}
 
-  handleChange = (e) => {
-    this.setState({
-      input: e.target.value
-    });
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    if (isIllegalPostTitle(this.state.input)) { 
-      this.setState({ input: "" });
-      return;
-    }
-
+  createNewPost = (postTitle) => {
     this.state.posts.push({
-      title: this.state.input,
+      title: postTitle,
       upvotes: 0,
       downvotes: 0,
     });
 
-    this.sortPosts();
-    this.setState({ input: "" });
-  } 
+    this.setState({ posts: sortPosts(this.state.posts) });
+  }    
 
   handleUpvote = (post) => {
     post.upvotes++;
@@ -89,20 +129,9 @@ class App extends Component {
 
     return (
       <div>
-        <form onSubmit={ this.handleSubmit }>
-          <input
-            type="text"
-            placeholder="Write the title of your new post."
-            onChange={ this.handleChange }
-            value={ this.state.input }
-          />
-          <Button
-            type="submit"
-            onClick={ this.handleSubmit }
-          >
-            Submit
-          </Button>
-        </form>
+        <AddPostForm 
+          createNewPost = { (input) => _this.createNewPost(input) }
+        />
 
         <div className="Posts">
           { 
@@ -115,7 +144,8 @@ class App extends Component {
                   handleDownvote = { (post) => _this.handleDownvote(post) }
                 />
               );
-          })}
+            })
+          }
         </div>
       </div>
     );

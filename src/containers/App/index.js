@@ -11,6 +11,7 @@ class App extends Component {
       posts: [],
     };
 
+    // Populate the list with some dummy posts.
     this.state.posts.push({
       title: "Why isn't Trump impeached yet?",
       upvotes: 100,
@@ -24,7 +25,7 @@ class App extends Component {
     });
 
     this.state.posts.push({
-      title: "Manga? To read or not to read?",
+      title: "Manga, to read or not to read?",
       upvotes: 4,
       downvotes: 0,
     });
@@ -44,7 +45,8 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (!this.state.input) {
+    if (isIllegalPostTitle(this.state.input)) { 
+      this.setState({ input: "" });
       return;
     }
 
@@ -55,10 +57,7 @@ class App extends Component {
     });
 
     this.sortPosts();
-
-    this.setState({
-      input: "",
-    });
+    this.setState({ input: "" });
   } 
 
   handleUpvote = (post, key) => {
@@ -85,12 +84,11 @@ class App extends Component {
 
     return (
       <div>
-        <div className="AddPost">
+        <form onSubmit={ this.handleSubmit }>
           <input
             type="text"
-            placeholder="Write the title of your post"
+            placeholder="Write the title of your new post."
             onChange={ this.handleChange }
-            onSubmit={ this.handleSubmit }
             value={ this.state.input }
           />
           <button
@@ -99,7 +97,7 @@ class App extends Component {
           >
             Submit
           </button>
-        </div>
+        </form>
 
         <div className="Posts">
           { Object.keys(posts).map(function(key) {
@@ -109,17 +107,17 @@ class App extends Component {
                   <div>Upvotes: { posts[key].upvotes }</div>
                   <div>Downvotes: { posts[key].downvotes }</div>
                   <button
-                      onClick={ _this.handleUpvote.bind(this, posts[key], key) }
-                      type="button"
-                    >
-                      Upvote
-                    </button>
-                    <button
-                      onClick={ _this.handleDownvote.bind(this, posts[key], key) }
-                      type="button"
-                    >
-                      Downvote
-                    </button>
+                    onClick={ _this.handleUpvote.bind(this, posts[key], key) }
+                    type="button"
+                  >
+                    Upvote
+                  </button>
+                  <button
+                    onClick={ _this.handleDownvote.bind(this, posts[key], key) }
+                    type="button"
+                  >
+                    Downvote
+                  </button>
                 </div>
               );
           })}
@@ -127,6 +125,23 @@ class App extends Component {
       </div>
     );
   }
+}
+
+function isIllegalPostTitle(s) {
+  let isEmptyString = s === "";
+  let isWhitespace = !/\S/.test(s);
+  let isLongerThan255 = s.length > 255;
+
+  if (isEmptyString || isWhitespace) {
+    return true;
+  }
+
+  if (isLongerThan255) {
+    alert("Title of post has length limit of 255!");
+    return true;
+  }
+
+  return false;
 }
 
 export default App;

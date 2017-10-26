@@ -1,7 +1,7 @@
 // src/containers/App/index.js
 
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { PageHeader, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 import { defaultPosts } from './defaultPosts'
 
@@ -18,9 +18,8 @@ class AddPostForm extends Component {
 
   getValidationState() {
     const length = this.state.input.length;
-    if (length > 10) return 'success';
-    else if (length > 5) return 'warning';
-    else if (length > 0) return 'error';
+    if (length > 255) return 'error';
+    else if (length > 0) return 'success';
     return null;
   }
 
@@ -32,10 +31,10 @@ class AddPostForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // if (isIllegalPostTitle(this.state.input)) { 
-    //   this.setState({ input: "" });
-    //   return;
-    // }
+    if (isIllegalPostTitle(this.state.input)) { 
+      this.setState({ input: "" });
+      return;
+    }
 
     this.props.createNewPost(this.state.input);
     this.setState({ input: "" });
@@ -43,19 +42,24 @@ class AddPostForm extends Component {
 
   render() {
     return (
-      <form onSubmit={ this.handleSubmit }>
-        <input
-          type="text"
-          placeholder="Write the title of your new post."
-          onChange={ this.handleChange }
-          value={ this.state.input }
-        />
-        <Button
-          type="submit"
-          onClick={ this.handleSubmit }
+      <form 
+        className="jumbotron container"
+        onSubmit={this.handleSubmit}
+      >
+        <FormGroup
+          controlId="formBasicText"
+          validationState={this.getValidationState()}
+          bsSize="large"
         >
-          Submit
-        </Button>
+          <ControlLabel>Create New Post</ControlLabel>
+          <FormControl 
+            type="text"
+            value={this.state.input}
+            placeholder="Write the title of your new post."
+            onChange={this.handleChange}
+          />
+          <FormControl.Feedback />
+        </FormGroup>
       </form>
     );
   }
@@ -65,17 +69,20 @@ class Post extends Component {
   render() {
     let post = this.props.posts[this.props.i];
     return (
-      <div>
+      <div className="jumbotron">
         <div>Title: { post.title }</div>
         <Button 
-          bsStyle="success" bsSize="small"
           onClick= { () => this.props.handleUpvote(post) }
+          bsStyle="success" 
+          bsSize="small"
         >
           Upvote
         </Button>
         <div>Upvotes: { post.upvotes }</div>
         <Button
           onClick= { () => this.props.handleDownvote(post) }
+          bsStyle="danger" 
+          bsSize="small"
         >
           Downvote
         </Button>
@@ -128,7 +135,8 @@ class App extends Component {
     let displayedPosts = posts.slice(0,20);
 
     return (
-      <div>
+      <div className="container">
+        <PageHeader>Carousell Reddit Clone <small>by Dylan Ho</small></PageHeader>
         <AddPostForm 
           createNewPost = { (input) => _this.createNewPost(input) }
         />
@@ -155,15 +163,9 @@ class App extends Component {
 function isIllegalPostTitle(s) {
   let isEmptyString = s === "";
   let isWhitespace = !/\S/.test(s);
-  let isLongerThan255 = s.length > 255;
 
   if (isEmptyString || isWhitespace) {
     alert("Please input non empty title!");
-    return true;
-  }
-
-  if (isLongerThan255) {
-    alert("Title of post has length limit of 255!");
     return true;
   }
 

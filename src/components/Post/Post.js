@@ -1,4 +1,4 @@
-// src/components/Post/index.js
+// src/components/Post/Post.js
 
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
@@ -11,7 +11,9 @@ class Post extends Component {
     return (
       <div className="jumbotron">
         <h2>{numbering}: { post.title }</h2>
+        <h4 className="text-muted">Submitted {post.hoursAgo} hours ago by {post.author}.</h4>
         <br />
+        <h4>Votes: { post.votes }</h4>
         <Button 
           onClick= { () => this.props.handleUpvote(post) }
           bsStyle="success" 
@@ -19,7 +21,6 @@ class Post extends Component {
         >
           Upvote
         </Button>
-        <div>Upvotes: { post.upvotes }</div>
         <Button
           onClick= { () => this.props.handleDownvote(post) }
           bsStyle="danger" 
@@ -27,7 +28,6 @@ class Post extends Component {
         >
           Downvote
         </Button>
-        <div>Downvotes: { post.downvotes }</div>
       </div>
     );
   }

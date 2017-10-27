@@ -1,10 +1,10 @@
-// src/containers/App/index.js
+// src/containers/App/App.js
 
 import React, { Component } from 'react';
 import { PageHeader } from 'react-bootstrap';
 
-import AddPost from '../../components/AddPost';
-import Post from '../../components/Post';
+import AddPost from '../../components/AddPost/AddPost';
+import Post from '../../components/Post/Post';
 
 import { defaultPosts } from './defaultPosts';
 
@@ -26,21 +26,22 @@ class App extends Component {
   createNewPost = (postTitle) => {
     this.state.posts.push({
       title: postTitle,
-      upvotes: 0,
-      downvotes: 0,
+      hoursAgo: 0,
+      author: "Dylan",
+      votes: 0,
     });
 
     this.setState({ posts: sortPosts(this.state.posts) });
   }    
 
   handleUpvote = (post) => {
-    post.upvotes++;
+    post.votes++;
     this.setState({ posts: sortPosts(this.state.posts) });
   }
 
   handleDownvote = (post) => {
-    post.downvotes++;
-    this.setState({ posts: this.state.posts });
+    post.votes--;
+    this.setState({ posts: sortPosts(this.state.posts) });
   }
 
   render() {
@@ -52,7 +53,7 @@ class App extends Component {
 
     return (
       <div className="container">
-        <PageHeader>Carousell Reddit Clone <small>by Dylan Ho</small></PageHeader>
+        <PageHeader><strong>Carousell Reddit Clone</strong></PageHeader>
         <AddPost 
           createNewPost = { (input) => _this.createNewPost(input) }
         />
@@ -76,9 +77,9 @@ class App extends Component {
   }
 }
 
-function sortPosts(posts) {
+export function sortPosts(posts) {
   let postsClone = posts.slice();
-  postsClone.sort(function(a, b) { return b.upvotes - a.upvotes; })
+  postsClone.sort(function(a, b) { return b.votes - a.votes; })
   return postsClone;
 }
 

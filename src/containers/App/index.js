@@ -7,7 +7,7 @@ import { defaultPosts } from './defaultPosts'
 
 import 'bootstrap/dist/css/bootstrap.css';
 
-class AddPostForm extends Component {
+class AddPost extends Component {
   constructor() {
     super();
 
@@ -31,12 +31,10 @@ class AddPostForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (isIllegalPostTitle(this.state.input)) { 
-      this.setState({ input: "" });
-      return;
+    if (isLegalPostTitle(this.state.input)) { 
+      this.props.createNewPost(this.state.input);
     }
 
-    this.props.createNewPost(this.state.input);
     this.setState({ input: "" });
   } 
 
@@ -68,9 +66,12 @@ class AddPostForm extends Component {
 class Post extends Component {
   render() {
     let post = this.props.posts[this.props.i];
+    let numbering = parseInt(this.props.i) + 1;
+
     return (
       <div className="jumbotron">
-        <div>Title: { post.title }</div>
+        <h2>{numbering}: { post.title }</h2>
+        <br />
         <Button 
           onClick= { () => this.props.handleUpvote(post) }
           bsStyle="success" 
@@ -137,11 +138,11 @@ class App extends Component {
     return (
       <div className="container">
         <PageHeader>Carousell Reddit Clone <small>by Dylan Ho</small></PageHeader>
-        <AddPostForm 
+        <AddPost 
           createNewPost = { (input) => _this.createNewPost(input) }
         />
 
-        <div className="Posts">
+        <div>
           { 
             Object.keys(displayedPosts).map(function(key) {
               return (
@@ -160,16 +161,22 @@ class App extends Component {
   }
 }
 
-function isIllegalPostTitle(s) {
+function isLegalPostTitle(s) {
   let isEmptyString = s === "";
   let isWhitespace = !/\S/.test(s);
+  let isLongerthan255 = s.length > 255;
 
   if (isEmptyString || isWhitespace) {
     alert("Please input non empty title!");
-    return true;
+    return false;
   }
 
-  return false;
+  else if (isLongerthan255) {
+    alert("Title has max length 255 characters!");
+    return false;
+  }
+
+  return true;
 }
 
 function sortPosts(posts) {

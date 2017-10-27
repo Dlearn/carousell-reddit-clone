@@ -1,3 +1,5 @@
+// src/containers/App/defaultPosts.js
+
 let defaultPosts = [
   {
     title: "Why isn't Trump impeached yet?",

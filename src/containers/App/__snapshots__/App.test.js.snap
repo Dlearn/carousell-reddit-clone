@@ -1,0 +1,966 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App matches snapshot 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="page-header"
+  >
+    <h1>
+      <strong>
+        Carousell Reddit Clone
+      </strong>
+    </h1>
+  </div>
+  <div>
+    <div />
+    <form
+      className="jumbotron myJumbotron"
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group form-group-lg has-feedback"
+      >
+        <label
+          className="h2 control-label"
+          htmlFor="formBasicText"
+          id="title"
+        >
+          Create New Post
+        </label>
+        <input
+          className="form-control"
+          id="formBasicText"
+          onChange={[Function]}
+          placeholder="Write the title of your new post."
+          type="text"
+          value=""
+        />
+      </div>
+    </form>
+  </div>
+  <div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        1
+        : 
+        Why isn't Trump impeached yet?
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        90
+         hours ago by 
+        crazymunch
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        100
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        2
+        : 
+        My Little Pony is the best show ever
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        10
+         hours ago by 
+        3DSUM
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        90
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        3
+        : 
+        What is your favorite board game?
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        23
+         hours ago by 
+        carlstones
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        80
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        4
+        : 
+        The quality of this subreddit is not good...
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        45
+         hours ago by 
+        51llahw
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        70
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        5
+        : 
+        Anybody concerned we only have upvotes in multiples of 10s?
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        58
+         hours ago by 
+        FeversMirrors
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        60
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        6
+        : 
+        Marvel or DC?
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        32
+         hours ago by 
+        madam1
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        50
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        7
+        : 
+        What are some of your favorite books?
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        95
+         hours ago by 
+        savvylol
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        40
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        8
+        : 
+        MEEEEEEEEEMES!!
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        39
+         hours ago by 
+        Pejkster
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        30
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        9
+        : 
+        How to build a jetpack?
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        76
+         hours ago by 
+        insoh2
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        29
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        10
+        : 
+        My Elsa Cosplay! Upvote!
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        28
+         hours ago by 
+        erinaceidae
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        28
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        11
+        : 
+        I just read Tale of two Cities. WOW.
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        2
+         hours ago by 
+        rotateclockwise
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        27
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        12
+        : 
+        I miss scooby dooby doo...
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        3
+         hours ago by 
+        PrestinSowers
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        26
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        13
+        : 
+        Updoot for love y'all!
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        13
+         hours ago by 
+        KungFooKangaroo
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        25
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        14
+        : 
+        If you upvote this, they will see this image when they google.
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        64
+         hours ago by 
+        Stanzin7
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        24
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        15
+        : 
+        Stranger things have happened since...
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        23
+         hours ago by 
+        aaronclements
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        3
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        16
+        : 
+        Anybody want to make friends?
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        45
+         hours ago by 
+        ivy_tamwood
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        2
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        17
+        : 
+        I'm not a good painter, but I made this in my spare time.
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        26
+         hours ago by 
+        Carp8DM
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        -5
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        18
+        : 
+        I just donated $10000 to North Korea! Help!
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        73
+         hours ago by 
+        ross-svh-photo
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        -10
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        19
+        : 
+        Everyone should watch Avatar: The Last Airbender.
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        18
+         hours ago by 
+        N3ptun3
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        -30
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+    <div
+      className="jumbotron"
+    >
+      <h2
+        id="title"
+      >
+        20
+        : 
+        Manga, to read or not to read?
+      </h2>
+      <h4
+        className="text-muted"
+        id="subtitle"
+      >
+        Submitted 
+        16
+         hours ago by 
+        mjc120
+        .
+      </h4>
+      <br />
+      <h4
+        id="votes"
+      >
+        Votes: 
+        -50
+      </h4>
+      <button
+        className="btn btn-sm btn-success"
+        disabled={false}
+        id="upvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Upvote
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        disabled={false}
+        id="downvote-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Downvote
+      </button>
+    </div>
+  </div>
+</div>
+`;

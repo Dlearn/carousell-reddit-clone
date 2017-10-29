@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App, { sortPosts } from './App';
+import renderer from 'react-test-renderer';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -39,4 +40,12 @@ it('sorts correctly', () => {
     },
   ];
 	expect(sortPosts(unsortedPosts)).toEqual(sortedPosts);
+});
+
+test('App matches snapshot', () => {
+  const component = renderer.create(
+    <App />
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
 });

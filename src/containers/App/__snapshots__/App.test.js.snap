@@ -25,7 +25,6 @@ exports[`App matches snapshot 1`] = `
         <label
           className="h2 control-label"
           htmlFor="formBasicText"
-          id="title"
         >
           Create New Post
         </label>

@@ -1,4 +1,4 @@
-// src/containers/App/Post.test.js
+// src/component/Post/Post.test.js
 
 import React from 'react';
 import { mount } from 'enzyme';

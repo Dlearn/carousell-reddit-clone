@@ -2,7 +2,7 @@
 Creating a reddit clone for Carousell Coding Exercise.
 
 ## Running the App
-Clone the repo and run `npm install` to install all the necessary libraries. Then run `npm start` to host the server locally. Go to [localhost:3000] to view your app. 
+Clone the repo and run `npm install` to install all the necessary libraries. Then run `npm start` to host the server locally. Go to <localhost:3000> to view your app. 
 
 The app is also hosted online on [Heroku](http://dylan-reddit-clone.herokuapp.com/).
 

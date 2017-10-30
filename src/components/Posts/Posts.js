@@ -7,6 +7,7 @@ class Post extends Component {
   constructor() {
     super();
 
+    // This local variable in the component checks if the votes have changed in the new props.
     this.previousVotes = 0;
   }
 

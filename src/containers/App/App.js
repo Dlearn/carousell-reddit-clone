@@ -51,6 +51,9 @@ class App extends Component {
   }
 
   render() {
+    // Filter the top 20 posts in the post array
+    let filteredPosts = this.state.posts.slice(0, 20);
+
     return (
       <div className="container">
         <PageHeader><strong>Carousell Reddit Clone</strong></PageHeader>
@@ -59,7 +62,7 @@ class App extends Component {
         />
 
         <Posts
-          posts = { this.state.posts }
+          posts = { filteredPosts }
           handleUpvote = { (i) => this.handleUpvote(i) }
           handleDownvote = { (i) => this.handleDownvote(i) }
         />

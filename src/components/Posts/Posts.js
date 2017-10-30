@@ -51,11 +51,8 @@ class Posts extends Component {
     // To preserve the context for an iterator later
     const _this = this;
 
-    // Filter the top 20 posts in the post array
-    let posts = this.props.posts.slice(0, 20);
-
     return (
-      posts.map(function(post, index) {
+      this.props.posts.map(function(post, index) {
         return (
           <Post 
             key = { index + post.title }

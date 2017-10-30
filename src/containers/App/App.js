@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { PageHeader } from 'react-bootstrap';
 
 import AddPost from '../../components/AddPost/AddPost';
-import Post from '../../components/Post/Post';
+import Posts from '../../components/Posts/Posts';
 
 import { defaultPosts } from './defaultPosts';
 
@@ -12,7 +12,8 @@ class App extends Component {
 	constructor() {
   	super();
 
-    let _this = this;
+    // To preserve the context for an iterator later
+    const _this = this;
     this.state = {
       posts: [],
     };
@@ -24,54 +25,44 @@ class App extends Component {
 	}
 
   createNewPost = (postTitle) => {
-    this.state.posts.push({
+    let posts = this.state.posts.slice();
+    posts.push({
       title: postTitle,
       hoursAgo: 0,
       author: "Dylan",
       votes: 0,
     });
-
-    this.setState({ posts: sortPosts(this.state.posts) });
+    
+    this.setState({ posts: sortPosts(posts) });
   }    
 
-  handleUpvote = (post) => {
-    post.votes++;
-    this.setState({ posts: sortPosts(this.state.posts) });
+  handleUpvote = (i) => {
+    let posts = this.state.posts.slice();
+    posts[i].votes++;
+
+    this.setState({ posts: sortPosts(posts) });
   }
 
-  handleDownvote = (post) => {
-    post.votes--;
-    this.setState({ posts: sortPosts(this.state.posts) });
+  handleDownvote = (i) => {
+    let posts = this.state.posts.slice();
+    posts[i].votes--;
+    
+    this.setState({ posts: sortPosts(posts) });
   }
 
   render() {
-    // To preserve the context for an iterator later
-    let _this = this;
-
-    let posts = this.state.posts;
-    let displayedPosts = posts.slice(0,20);
-
     return (
       <div className="container">
         <PageHeader><strong>Carousell Reddit Clone</strong></PageHeader>
         <AddPost 
-          createNewPost = { (input) => _this.createNewPost(input) }
+          createNewPost = { (i) => this.createNewPost(i) }
         />
 
-        <div>
-          { 
-            Object.keys(displayedPosts).map(function(key) {
-              return (
-                <Post key = {key}
-                  posts = { displayedPosts }
-                  i = { key }
-                  handleUpvote = { (post) => _this.handleUpvote(post) }
-                  handleDownvote = { (post) => _this.handleDownvote(post) }
-                />
-              );
-            })
-          }
-        </div>
+        <Posts
+          posts = { this.state.posts }
+          handleUpvote = { (i) => this.handleUpvote(i) }
+          handleDownvote = { (i) => this.handleDownvote(i) }
+        />
       </div>
     );
   }

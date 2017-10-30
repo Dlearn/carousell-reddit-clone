@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import App, { sortPosts } from './App';
-import Post from './../../components/Post/Post';
+import Posts from './../../components/Posts/Posts';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');

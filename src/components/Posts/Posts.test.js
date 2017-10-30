@@ -1,8 +1,8 @@
-// src/component/Post/Post.test.js
+// src/component/Posts/Posts.test.js
 
 import React from 'react';
 import { mount } from 'enzyme';
-import Post from './Post';
+import Posts from './Posts';
 
 const posts = [
   { 
@@ -15,7 +15,7 @@ const posts = [
 
 describe('Post properly rendered', () => {
   const wrapper = mount(
-    <Post 
+    <Posts 
       posts = { posts }
       i = { 0 }
     />
@@ -51,7 +51,7 @@ describe('Post properly rendered', () => {
 it('calls handleUpvote function correctly', () => {
   const handleUpvote = jest.fn();
   const wrapper = mount(
-    <Post 
+    <Posts 
       posts = { posts }
       i = { 0 }
       handleUpvote = { handleUpvote }
@@ -65,7 +65,7 @@ it('calls handleUpvote function correctly', () => {
 it('calls handleUpvote function correctly', () => {
   const handleDownvote = jest.fn();
   const wrapper = mount(
-    <Post 
+    <Posts 
       posts = { posts }
       i = { 0 }
       handleDownvote = { handleDownvote } 

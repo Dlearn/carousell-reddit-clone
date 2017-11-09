@@ -12,11 +12,14 @@ class Post extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    const votesChanged = this.previousVotes !== this.props.post.votes;
-    return votesChanged;
+    // console.log('Current votes: ' + this.props.post.votes);
+    // console.log('Next votes: ' + nextProps.post.votes);
+    const hasVotesChanged = this.previousVotes !== this.props.post.votes;
+    return hasVotesChanged;
   }
 
   render() {
+    // console.log(this.props.index);
     let post = this.props.post;
     this.previousVotes = post.votes;
 

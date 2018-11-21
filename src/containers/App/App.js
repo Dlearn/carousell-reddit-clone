@@ -1,58 +1,52 @@
 // src/containers/App/App.js
 
-import React, { Component } from "react";
-import { PageHeader } from "react-bootstrap";
+import React, { Component } from 'react';
+import { PageHeader } from 'react-bootstrap';
 
-import AddPost from "../../components/AddPost/AddPost";
-import Posts from "../../components/Posts/Posts";
+import AddPost from '../../components/AddPost/AddPost';
+import Posts from '../../components/Posts/Posts';
 
-import { defaultPosts } from "./defaultPosts";
+import defaultPosts from './defaultPosts';
 
 class App extends Component {
   constructor() {
     super();
 
-    // To preserve the context for an iterator later
-    const _this = this;
-    this.state = {
-      posts: [],
-    };
-
     // Populate the list with some dummy posts.
-    defaultPosts.forEach(function(post) {
-      _this.state.posts.push(post);
-    });
+    this.state = {
+      posts: defaultPosts,
+    };
   }
 
-  createNewPost = postTitle => {
-    let posts = this.state.posts.slice();
+  createNewPost = (postTitle) => {
+    const posts = this.state.posts.slice();
     posts.push({
       title: postTitle,
       hoursAgo: 0,
-      author: "Dylan",
+      author: 'Dylan',
       votes: 0,
     });
 
     this.setState({ posts: sortPosts(posts) });
   };
 
-  handleUpvote = i => {
-    let posts = this.state.posts.slice();
-    posts[i].votes++;
+  handleUpvote = (i) => {
+    const posts = this.state.posts.slice();
+    posts[i].votes += 1;
 
     this.setState({ posts: sortPosts(posts) });
   };
 
-  handleDownvote = i => {
-    let posts = this.state.posts.slice();
-    posts[i].votes--;
+  handleDownvote = (i) => {
+    const posts = this.state.posts.slice();
+    posts[i].votes -= 1;
 
     this.setState({ posts: sortPosts(posts) });
   };
 
   render() {
     // Filter the top 20 posts in the post array
-    let filteredPosts = this.state.posts.slice(0, 20);
+    const filteredPosts = this.state.posts.slice(0, 20);
 
     return (
       <div className="container">
@@ -72,10 +66,8 @@ class App extends Component {
 }
 
 export function sortPosts(posts) {
-  let postsClone = posts.slice();
-  postsClone.sort(function(a, b) {
-    return b.votes - a.votes;
-  });
+  const postsClone = posts.slice();
+  postsClone.sort((a, b) => b.votes - a.votes);
   return postsClone;
 }
 

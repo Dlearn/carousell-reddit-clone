@@ -1,46 +1,46 @@
 // src/components/AddPost/AddPost.js
 
-import React, { Component } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import { FormGroup, ControlLabel, FormControl } from "react-bootstrap";
+import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
-import "react-toastify/dist/ReactToastify.min.css";
-import "./styles.css";
+import 'react-toastify/dist/ReactToastify.min.css';
+import './styles.css';
 
 class AddPost extends Component {
   constructor() {
     super();
 
     this.state = {
-      input: "",
+      input: '',
     };
   }
 
   getValidationState() {
     const length = this.state.input.length;
-    if (length > 255) return "error";
-    else if (length > 0) return "success";
+    if (length > 255) return 'error';
+    if (length > 0) return 'success';
     return null;
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
       input: e.target.value,
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     if (isLegalPostTitle(this.state.input)) {
       this.props.createNewPost(this.state.input);
       this.newPostToast();
     }
 
-    this.setState({ input: "" });
+    this.setState({ input: '' });
   };
 
   newPostToast = () => {
-    toast("New post created!");
+    toast('New post created!');
   };
 
   render() {
@@ -50,7 +50,7 @@ class AddPost extends Component {
           position="top-right"
           type="default"
           autoClose={3000}
-          hideProgressBar={true}
+          hideProgressBar
           newestOnTop={false}
           closeOnClick
         />
@@ -76,15 +76,16 @@ class AddPost extends Component {
 }
 
 export function isLegalPostTitle(s) {
-  let isEmptyString = s === "";
-  let isWhitespace = !/\S/.test(s);
-  let isLongerthan255 = s.length > 255;
+  const isEmptyString = s === '';
+  const isWhitespace = !/\S/.test(s);
+  const isLongerthan255 = s.length > 255;
 
   if (isEmptyString || isWhitespace) {
-    alert("Please input non empty title!");
+    alert('Please input non empty title!');
     return false;
-  } else if (isLongerthan255) {
-    alert("Title has max length 255 characters!");
+  }
+  if (isLongerthan255) {
+    alert('Title has max length 255 characters!');
     return false;
   }
 

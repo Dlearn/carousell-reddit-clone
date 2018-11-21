@@ -1,16 +1,16 @@
 // src/containers/App/App.js
 
-import React, { Component } from 'react';
-import { PageHeader } from 'react-bootstrap';
+import React, { Component } from "react";
+import { PageHeader } from "react-bootstrap";
 
-import AddPost from '../../components/AddPost/AddPost';
-import Posts from '../../components/Posts/Posts';
+import AddPost from "../../components/AddPost/AddPost";
+import Posts from "../../components/Posts/Posts";
 
-import { defaultPosts } from './defaultPosts';
+import { defaultPosts } from "./defaultPosts";
 
 class App extends Component {
-	constructor() {
-  	super();
+  constructor() {
+    super();
 
     // To preserve the context for an iterator later
     const _this = this;
@@ -22,9 +22,9 @@ class App extends Component {
     defaultPosts.forEach(function(post) {
       _this.state.posts.push(post);
     });
-	}
+  }
 
-  createNewPost = (postTitle) => {
+  createNewPost = postTitle => {
     let posts = this.state.posts.slice();
     posts.push({
       title: postTitle,
@@ -32,23 +32,23 @@ class App extends Component {
       author: "Dylan",
       votes: 0,
     });
-    
-    this.setState({ posts: sortPosts(posts) });
-  }    
 
-  handleUpvote = (i) => {
+    this.setState({ posts: sortPosts(posts) });
+  };
+
+  handleUpvote = i => {
     let posts = this.state.posts.slice();
     posts[i].votes++;
 
     this.setState({ posts: sortPosts(posts) });
-  }
+  };
 
-  handleDownvote = (i) => {
+  handleDownvote = i => {
     let posts = this.state.posts.slice();
     posts[i].votes--;
-    
+
     this.setState({ posts: sortPosts(posts) });
-  }
+  };
 
   render() {
     // Filter the top 20 posts in the post array
@@ -56,15 +56,15 @@ class App extends Component {
 
     return (
       <div className="container">
-        <PageHeader><strong>Carousell Reddit Clone</strong></PageHeader>
-        <AddPost 
-          createNewPost = { (i) => this.createNewPost(i) }
-        />
+        <PageHeader>
+          <strong>Reddit Clone</strong>
+        </PageHeader>
+        <AddPost createNewPost={i => this.createNewPost(i)} />
 
         <Posts
-          posts = { filteredPosts }
-          handleUpvote = { (i) => this.handleUpvote(i) }
-          handleDownvote = { (i) => this.handleDownvote(i) }
+          posts={filteredPosts}
+          handleUpvote={i => this.handleUpvote(i)}
+          handleDownvote={i => this.handleDownvote(i)}
         />
       </div>
     );
@@ -73,7 +73,9 @@ class App extends Component {
 
 export function sortPosts(posts) {
   let postsClone = posts.slice();
-  postsClone.sort(function(a, b) { return b.votes - a.votes; })
+  postsClone.sort(function(a, b) {
+    return b.votes - a.votes;
+  });
   return postsClone;
 }
 

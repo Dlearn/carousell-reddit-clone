@@ -1,9 +1,19 @@
 // src/components/Posts/Posts.js
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import type { Node } from 'react';
 import { Button, Panel } from 'react-bootstrap';
 
-class Post extends Component {
+import type { Post as PostType } from '../../data/Post';
+
+type PostProps = {
+  handleDownvote: (index: number) => void,
+  handleUpvote: (index: number) => void,
+  index: number,
+  post: PostType,
+};
+
+class Post extends PureComponent<PostProps, void> {
   render() {
     const { handleDownvote, handleUpvote, index, post } = this.props;
     const postNumber = parseInt(index, 10) + 1;
@@ -36,8 +46,14 @@ class Post extends Component {
   }
 }
 
-class Posts extends Component {
-  render() {
+type PostsProps = {
+  handleDownvote: (index: number) => void,
+  handleUpvote: (index: number) => void,
+  posts: PostType[],
+};
+
+class Posts extends PureComponent<PostsProps, void> {
+  render(): Node[] {
     const { posts, handleDownvote, handleUpvote } = this.props;
 
     return posts.map((post, index) => (

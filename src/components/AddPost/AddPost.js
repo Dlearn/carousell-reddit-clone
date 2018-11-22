@@ -1,13 +1,19 @@
 // src/components/AddPost/AddPost.js
 
-import React, { Component } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import React, { PureComponent } from 'react';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
-import 'react-toastify/dist/ReactToastify.min.css';
 import './styles.css';
 
-class AddPost extends Component {
+type Props = {
+  createNewPost: (postTitle: string) => void,
+};
+
+type State = {
+  input: string,
+};
+
+class AddPost extends PureComponent<Props, State> {
   constructor() {
     super();
 
@@ -23,37 +29,24 @@ class AddPost extends Component {
     return null;
   }
 
-  handleChange = (e) => {
+  handleChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
     this.setState({
       input: e.target.value,
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = (e: SyntheticInputEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (isLegalPostTitle(this.state.input)) {
       this.props.createNewPost(this.state.input);
-      this.newPostToast();
     }
 
     this.setState({ input: '' });
   };
 
-  newPostToast = () => {
-    toast('New post created!');
-  };
-
   render() {
     return (
       <div>
-        <ToastContainer
-          position="top-right"
-          type="default"
-          autoClose={3000}
-          hideProgressBar
-          newestOnTop={false}
-          closeOnClick
-        />
         <form className="jumbotron myJumbotron" onSubmit={this.handleSubmit}>
           <FormGroup
             controlId="formBasicText"
@@ -75,10 +68,10 @@ class AddPost extends Component {
   }
 }
 
-export function isLegalPostTitle(s) {
-  const isEmptyString = s === '';
-  const isWhitespace = !/\S/.test(s);
-  const isLongerthan255 = s.length > 255;
+export function isLegalPostTitle(string: string) {
+  const isEmptyString = string === '';
+  const isWhitespace = !/\S/.test(string);
+  const isLongerthan255 = string.length > 255;
 
   if (isEmptyString || isWhitespace) {
     alert('Please input non empty title!');

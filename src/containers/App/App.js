@@ -1,14 +1,19 @@
 // src/containers/App/App.js
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { PageHeader } from 'react-bootstrap';
 
 import AddPost from '../../components/AddPost/AddPost';
 import Posts from '../../components/Posts/Posts';
+import type { Post as PostType } from '../../data/Post';
 
 import defaultPosts from './defaultPosts';
 
-class App extends Component {
+type State = {
+  posts: PostType[],
+};
+
+class App extends PureComponent<{}, State> {
   constructor() {
     super();
 
@@ -18,7 +23,7 @@ class App extends Component {
     };
   }
 
-  createNewPost = (postTitle) => {
+  createNewPost = (postTitle: string) => {
     const posts = this.state.posts.slice();
     posts.push({
       title: postTitle,
@@ -30,16 +35,16 @@ class App extends Component {
     this.setState({ posts: sortPosts(posts) });
   };
 
-  handleUpvote = (i) => {
+  handleUpvote = (index: number) => {
     const posts = this.state.posts.slice();
-    posts[i].votes += 1;
+    posts[index].votes += 1;
 
     this.setState({ posts: sortPosts(posts) });
   };
 
-  handleDownvote = (i) => {
+  handleDownvote = (index: number) => {
     const posts = this.state.posts.slice();
-    posts[i].votes -= 1;
+    posts[index].votes -= 1;
 
     this.setState({ posts: sortPosts(posts) });
   };
@@ -53,7 +58,7 @@ class App extends Component {
         <PageHeader>
           <strong>Reddit Clone</strong>
         </PageHeader>
-        <AddPost createNewPost={i => this.createNewPost(i)} />
+        <AddPost createNewPost={this.createNewPost} />
 
         <Posts
           posts={filteredPosts}
@@ -65,7 +70,7 @@ class App extends Component {
   }
 }
 
-export function sortPosts(posts) {
+export function sortPosts(posts: PostType[]): PostType[] {
   const postsClone = posts.slice();
   postsClone.sort((a, b) => b.votes - a.votes);
   return postsClone;

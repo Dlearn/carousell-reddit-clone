@@ -1,7 +1,9 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "plugin:flowtype/recommended"],
+  "plugins": ["flowtype"],
   "parser": "babel-eslint",
   "rules": {
+    "flowtype/no-types-missing-file-annotation": 0,
     "no-alert": 0,
     "no-use-before-define": 0,
     "object-curly-newline": 0,
